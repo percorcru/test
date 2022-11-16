@@ -9,4 +9,4 @@
 - build image:          docker build ./docker -t robotbase_a
 - levantar todo:        docker compose up -d
 - manejar contenedor:   docker compose {start|stop|up -d} cont_name
-- 
+
