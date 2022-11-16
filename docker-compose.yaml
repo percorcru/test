@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  apibot01:
+    platform: 'linux/x86_64'
+    image: robotbase_a
+#    build:
+#      context: .
+#      dockerfile: dockerfiles/webapi/Dockerfile
+    container_name: apibot01
+    environment:
+      - ROBOT_NAME=robot.Robot # modulo.clase
+    volumes:
+      - ./src:/code
+      # - /mnt/pwdrivers:/pwdrivers
+      - ./pwdrivers:/root/.cache
+    ports:
+      - "5001:5000"
+    restart: always
+    command: gunicorn --bind 0.0.0.0:5000 --timeout 360 --workers 2 webapi.api:app --reload
+    
+  apibot02:
+    platform: 'linux/x86_64'
+    image: robotbase_a
+#    build:
+#      context: .
+#      dockerfile: dockerfiles/webapi/Dockerfile
+    container_name: apibot02
+    environment:
+      - ROBOT_NAME=robot2.Robot2 # modulo.clase
+    volumes:
+      - ./src:/code
+      # - /mnt/pwdrivers:/pwdrivers
+      - ./pwdrivers:/root/.cache
+    ports:
+      - "5002:5000"
+    restart: always
+    command: gunicorn --bind 0.0.0.0:5000 --timeout 360 --workers 2 webapi.api:app --reload
+ 
