@@ -16,8 +16,8 @@ RUN apt-get -y install procps htop vim curl wget
 # IBM Driver
 # pyodbc.connect( DRIVER='{IBM i Access ODBC Driver}', SYSTEM='10.19.17.21', UID='sap99', PWD='hgerf564')
 RUN curl https://public.dhe.ibm.com/software/ibmi/products/odbc/debs/dists/1.1.0/ibmi-acs-1.1.0.list | tee /etc/apt/sources.list.d/ibmi-acs-1.1.0.list; \
-    apt -y update; \
-    apt -y install ibm-iaccess
+    apt-get -y update; \
+    apt-get -y install ibm-iaccess
 
 # dependencias python
 COPY requirements.txt /var/tmp/requirements.txt
@@ -31,7 +31,7 @@ RUN pip install pip --upgrade; \
 # RUN mkdir -p /etc/apt/keyrings  
 # RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg 
 # RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null  
-# RUN apt-get -y update && apt -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin  
+# RUN apt-get -y update && apt.get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin  
 
 #smb
 # RUN apt-get -y install smbclient cifs-utils
