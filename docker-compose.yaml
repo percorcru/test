@@ -44,5 +44,5 @@ services:
       driver_opts:
         type: cifs
         device: "//10.0.0.89/av"
-        o: "domain=miatechdomain,username=userprod,password=Kokoroko707"
+        o: "username=userprod,password=Kokoroko707"
  
