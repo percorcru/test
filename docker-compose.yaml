@@ -15,6 +15,7 @@ services:
       - ./src:/code
       # - /mnt/pwdrivers:/pwdrivers
       - ./pwdrivers:/root/.cache
+      - wslan-av:/tmp/av
     ports:
       - "5001:5000"
     restart: always
@@ -37,4 +38,12 @@ services:
       - "5002:5000"
     restart: always
     command: gunicorn --bind 0.0.0.0:5000 --timeout 360 --workers 2 webapi.api:app --reload
+  
+  volumes:
+    wslan-av:
+      driver: local
+      driver_opts:
+        type: cifs
+        device: //wslan/av
+        o: "domain=miatechdomain,username=userprod,password=Kokoroko707,uid=1000,gid=100"
  
