@@ -7,7 +7,7 @@ from webapi.process_wrapper import ProcessWrapper
 import subprocess
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 api = Api(app)
 
 
