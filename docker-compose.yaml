@@ -15,7 +15,7 @@ services:
       - ./src:/code
       # - /mnt/pwdrivers:/pwdrivers
       - ./pwdrivers:/root/.cache
-      - /mnt/nw/wslan/av:/home
+      - /mnt/nw/wslan/lan:/home
     ports:
       - "5001:5000"
     restart: always
