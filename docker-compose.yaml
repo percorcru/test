@@ -15,7 +15,7 @@ services:
       - ./src:/code
       # - /mnt/pwdrivers:/pwdrivers
       - ./pwdrivers:/root/.cache
-      - wslan-av:/home
+      - /mnt/nw/wslan/av:/home
     ports:
       - "5001:5000"
     restart: always
@@ -39,11 +39,11 @@ services:
     restart: always
     command: gunicorn --bind 0.0.0.0:5000 --timeout 360 --workers 2 webapi.api:app --reload
   
-  volumes:
-    wslan-av:
-      driver_opts:
-        type: cifs
-        device: "//10.0.0.89/av"
-        o: "defaults,user,noserverino,domain=miatechdomainusername=userprod,password=Kokoroko707,uid=1000,gid=100"
+  # volumes:
+  #   wslan-av:
+  #     driver_opts:
+  #       type: cifs
+  #       device: "//10.0.0.89/av"
+  #       o: "defaults,user,noserverino,domain=miatechdomainusername=userprod,password=Kokoroko707,uid=1000,gid=100"
 
  
