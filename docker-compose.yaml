@@ -15,7 +15,7 @@ services:
       - ./src:/code
       # - /mnt/pwdrivers:/pwdrivers
       - ./pwdrivers:/root/.cache
-      - wslan-av:/home
+      - wslanav:/home
     ports:
       - "5001:5000"
     restart: always
@@ -40,8 +40,7 @@ services:
     command: gunicorn --bind 0.0.0.0:5000 --timeout 360 --workers 2 webapi.api:app --reload
   
   volumes:
-    wslan-av:
-      driver: local
+    wslanav:
       driver_opts:
         type: cifs
         device: "//10.0.0.89/av"
